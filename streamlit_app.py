@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import altair as alt
-
+import matplotlib.pyplot as plt
 
 # Page title
 st.set_page_config(page_title='Data Skillset Accumulator', page_icon='📊')
