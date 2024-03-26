@@ -45,7 +45,7 @@ if skills_selection:
     
   # Create DataFrame for visualization
     data = {
-        'Type': ['Selected Skills','Skills Still to Learn',] * len(skills_selection),
+        'Skills': ['Selected Skills','Skills Still to Learn',] * len(skills_selection),
         'Percentage': [total_percentage,remaining_percentage] * len(skills_selection),
         'Skill': skills_selection * 2
     }
