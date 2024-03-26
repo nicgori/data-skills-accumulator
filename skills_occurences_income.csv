@@ -1,0 +1,87 @@
+skill_cat_1,skill,avg_yearly_salary,count_occurrences
+Database,azure,97312,1683
+Database,snowflake,110502,1509
+Database,aws,98847,1366
+Database,sap,94335,1081
+Database,gcp,96318,594
+Database,bigquery,100727,432
+Database,redshift,103855,429
+Database,nosql,105836,406
+Database,mongodb,96816,153
+Database,aurora,84334,48
+Database,no-sql,130200,27
+Database,redis,114400,16
+Database,elixir,,6
+Data Visualization,power_bi,89867,7171
+Data Visualization,tableau,88351,6576
+Data Visualization,looker,93617,1138
+Data Visualization,qlik,97213,528
+Data Visualization,ssrs,94854,519
+Data Visualization,cognos,78281,321
+Data Visualization,microstrategy,85683,238
+Programming Language,sql,90469,14251
+Programming Language,python,96760,10325
+Programming Language,r,88296,4763
+Programming Language,sas,87321,2340
+Programming Language,go,88408,1018
+Programming Language,c,98081,1001
+Programming Language,scala,111576,759
+Programming Language,javascript,70079,728
+Programming Language,vba,74802,643
+Programming Language,java,86947,635
+Programming Language,dax,78498,368
+Programming Language,shell,94150,294
+Programming Language,matlab,83934,264
+Programming Language,html,89789,217
+Programming Language,visual_basic,93988,168
+Programming Language,css,91806,117
+Programming Language,assembly,69872,91
+Programming Language,perl,74640,68
+Programming Language,php,94022,57
+Programming Language,bash,94080,51
+Programming Language,ruby,91544,47
+Programming Language,swift,,30
+Programming Language,julia,103274,30
+Programming Language,asp.net,71640,30
+Programming Language,cobol,88773,19
+Programming Language,groovy,20800,17
+Programming Language,graphql,,10
+Programming Language,solidity,31200,8
+Programming Language,rust,,6
+Programming Language,mxnet,72800,5
+Programming Language,dart,,4
+Programming Language,apl,,3
+Programming Language,erlang,80000,2
+Programming Language,kotlin,,2
+Programming Language,haskell,,1
+Programming Language,clojure,,1
+Programming Language,delphi,,1
+Programming Language,fortran,,1
+Other Tool and Technology,word,72412,2083
+Other Tool and Technology,powerpoint,80866,1891
+Other Tool and Technology,outlook,68099,785
+Other Tool and Technology,visio,91462,302
+Other Tool and Technology,linux,85496,248
+Other Tool and Technology,docker,103318,143
+Other Tool and Technology,unix,60624,138
+Other Tool and Technology,gdpr,111340,89
+Other Tool and Technology,terminal,84186,50
+Other Tool and Technology,multi linear regression (mlr),,3
+Data Analysis and Processing Tool,excel,80247,9982
+Data Analysis and Processing Tool,spark,109285,1361
+Data Analysis and Processing Tool,spss,69417,865
+Data Analysis and Processing Tool,alteryx,90565,748
+Data Analysis and Processing Tool,hadoop,100889,701
+Data Analysis and Processing Tool,ssis,99439,512
+Data Analysis and Processing Tool,airflow,104886,261
+Data Analysis and Processing Tool,crystal,70112,249
+Data Analysis and Processing Tool,nuix,,5
+Data Analysis and Processing Tool,datarobot,122000,4
+Version Control and Collaboration Tool,jira,101095,671
+Version Control and Collaboration Tool,sharepoint,83324,596
+Version Control and Collaboration Tool,git,98865,340
+Version Control and Collaboration Tool,github,105762,187
+Version Control and Collaboration Tool,gitlab,118560,65
+Version Control and Collaboration Tool,atlassian,87443,40
+Version Control and Collaboration Tool,bitbucket,100067,36
+Version Control and Collaboration Tool,twilio,183040,7
