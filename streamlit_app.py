@@ -3,48 +3,73 @@ import numpy as np
 import pandas as pd
 import altair as alt
 
+
 # Page title
 st.set_page_config(page_title='Data Skillset Accumulator', page_icon='📊')
 st.title('📊 Data Skillset Accumulator')
 
-with st.expander('About this app'):
-  st.markdown('**What can this app do?**')
-  st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
-  st.markdown('**How to use the app?**')
-  st.warning('To engage with the app, 1. Select genres of your interest in the drop-down selection box and then 2. Select the year duration from the slider widget. As a result, this should generate an updated editable DataFrame and line plot.')
-  
-st.subheader('Which Movie Genre performs ($) best at the box office?')
+st.subheader('Find out what percentage of data anaylst job offers you can cover with your skillset!')
 
 # Load data
 df = pd.read_csv('data/skills_occurences_income.csv')
 # df.year = df.year.astype('int')
+
+
+# Function to calculate percentage
+def calculate_percentage(skill_input):
+    total_occurrences = df['count_occurrences'].sum()
+    skill_occurrences = df.loc[df['skill'] == skill_input, 'count_occurrences'].iloc[0]
+    skill_percentage = (skill_occurrences / total_occurrences) * 100
+    return skill_percentage
+
+# Function to calculate total percentage for multiple skills
+def calculate_total_percentage(skills_input):
+    total_percentage = 0
+    for skill in skills_input:
+        total_percentage += calculate_percentage(skill)
+    return total_percentage
 
 # Input widgets
 ## Genres selection
 skills_list = df.skill.unique()
 skills_selection = st.multiselect('Select skills', skills_list, ['python'])
 
-# ## Year selection
-# year_list = df.year.unique()
-# year_selection = st.slider('Select year duration', 1986, 2006, (2000, 2016))
-# year_selection_list = list(np.arange(year_selection[0], year_selection[1]+1))
+# Calculate and display total percentage for selected skills
+if skills_selection:
+    total_percentage = calculate_total_percentage(skills_selection)
+    st.write(f"The total percentage of selected skills is: {total_percentage:.2f}%")
 
-# df_selection = df[df.genre.isin(genres_selection) & df['year'].isin(year_selection_list)]
-# reshaped_df = df_selection.pivot_table(index='year', columns='genre', values='gross', aggfunc='sum', fill_value=0)
-# reshaped_df = reshaped_df.sort_values(by='year', ascending=False)
 
 
 # Display DataFrame
 
-df_editor = st.data_editor(df, height=212, use_container_width=True,
+#df_editor = st.data_editor(df, height=212, use_container_width=True,
                             # column_config={"year": st.column_config.TextColumn("Year")},
-                            num_rows="dynamic")
+                            #num_rows="dynamic")
 # df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
 
-# Display chart
-# chart = alt.Chart(df_chart).mark_line().encode(
-#             x=alt.X('year:N', title='Year'),
-#             y=alt.Y('gross:Q', title='Gross earnings ($)'),
-#             color='genre:N'
-#             ).properties(height=320)
-# st.altair_chart(chart, use_container_width=True)
+#Dispaly as Bar Chart
+
+# Calculate total percentage for selected skills
+if skills_selection:
+    total_percentage = calculate_total_percentage(skills_selection)
+    
+    # Create DataFrame for visualization
+    data = {'Skill': ['Total'], 'Percentage': [total_percentage]}
+    chart_df = pd.DataFrame(data)
+    #print(chart_df)
+    # Display chart
+    st.write(f"The total percentage of {'+'.join(skills_selection)} is: {total_percentage:.2f}% out of 100%")
+    
+    # Create horizontal bar chart
+    chart = alt.Chart(chart_df).mark_bar().encode(
+        y=alt.Y('Skill', title='Skill'),
+        x=alt.X('Percentage', title='Percentage', axis=alt.Axis(format='%')),
+        color=alt.value('blue')  # Color of the bar
+    ).properties(
+        width=600,
+        title='Skill Percentage'
+    )
+    
+    # Display chart
+    st.altair_chart(chart, use_container_width=True)
