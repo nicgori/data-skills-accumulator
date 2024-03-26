@@ -38,38 +38,16 @@ skills_selection = st.multiselect('Select skills', skills_list, ['python'])
 if skills_selection:
     total_percentage = calculate_total_percentage(skills_selection)
     st.write(f"The total percentage of selected skills is: {total_percentage:.2f}%")
-
-
-
-# Display DataFrame
-
-#df_editor = st.data_editor(df, height=212, use_container_width=True,
-                            # column_config={"year": st.column_config.TextColumn("Year")},
-                            #num_rows="dynamic")
-# df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
-
-#Dispaly as Bar Chart
-
-# Calculate total percentage for selected skills
+# Calculate and display remainig percentage for selected skills
 if skills_selection:
-    total_percentage = calculate_total_percentage(skills_selection)
+    remaining_percentage = 100 - total_percentage
+    st.write(f"The total percentage of remaining skills is: {remaining_percentage:.2f}%")
     
-    # Create DataFrame for visualization
-    data = {'Skill': ['Total'], 'Percentage': [total_percentage]}
+  # Create DataFrame for visualization
+    data = {
+        'Type': ['Selected Skills','Skills Still to Learn',] * len(skills_selection),
+        'Percentage': [total_percentage,remaining_percentage] * len(skills_selection),
+        'Skill': skills_selection * 2
+    }
     chart_df = pd.DataFrame(data)
-    #print(chart_df)
-    # Display chart
-    st.write(f"The total percentage of {'+'.join(skills_selection)} is: {total_percentage:.2f}% out of 100%")
-    
-    # Create horizontal bar chart
-    chart = alt.Chart(chart_df).mark_bar().encode(
-        y=alt.Y('Skill', title='Skill'),
-        x=alt.X('Percentage', title='Percentage', axis=alt.Axis(format='%')),
-        color=alt.value('blue')  # Color of the bar
-    ).properties(
-        width=600,
-        title='Skill Percentage'
-    )
-    
-    # Display chart
-    st.altair_chart(chart, use_container_width=True)
+
