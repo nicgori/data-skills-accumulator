@@ -4,6 +4,7 @@ import pandas as pd
 import altair as alt
 import matplotlib.pyplot as plt
 
+
 # Page title
 st.set_page_config(page_title='Data Skillset Accumulator', page_icon='📊')
 st.title('📊 Data Skillset Accumulator')
@@ -32,7 +33,7 @@ def calculate_total_percentage(skills_input):
 # Input widgets
 ## Genres selection
 skills_list = df.skill.unique()
-skills_selection = st.multiselect('Select skills', skills_list, ['python'])
+skills_selection = st.multiselect('Select skills', skills_list, ['python','sql'])
 
 # Calculate and display total percentage for selected skills
 if skills_selection:
@@ -43,11 +44,57 @@ if skills_selection:
     remaining_percentage = 100 - total_percentage
     st.write(f"The total percentage of remaining skills is: {remaining_percentage:.2f}%")
     
-  # Create DataFrame for visualization
-    data = {
-        'Skills': ['Selected Skills','Skills Still to Learn',] * len(skills_selection),
-        'Percentage': [total_percentage,remaining_percentage] * len(skills_selection),
-        'Skill': skills_selection * 2
-    }
-    chart_df = pd.DataFrame(data)
+# # Create DataFrame for visualization
 
+# data = {
+#      'Skills': ['Selected Skills', 'Skills Still to Learn'],
+#      'Percentage': [total_percentage, remaining_percentage]
+#  }
+# chart_df = pd.DataFrame(data)
+# # Create stacked column bar chart with Altair'
+
+# data = {
+#       'Skills': ['Selected Skills', 'Skills Still to Learn'],
+#       'Percentage': [total_percentage, 100 - total_percentage]
+#   }
+# chart_df = pd.DataFrame(data)
+# # Create stacked column bar chart with Altair'
+
+#print(chart_df)
+
+
+# # Create stacked column bar chart with Altair
+# bar_chart = alt.Chart(chart_df).mark_bar().encode(
+#     x=alt.X('Skills:N', axis=alt.Axis(title=None)),
+#     y=alt.Y('Percentage:Q', axis=alt.Axis(title='Percentage')),
+#     color=alt.Color('Skills:N', scale=alt.Scale(range=['#1f77b4', '#ff7f0e']), legend=None),
+# )
+
+# # Display chart
+# st.altair_chart(bar_chart, use_container_width=True)
+
+# Create DataFrame for visualization
+# 
+# Create DataFrame for visualization
+# data = {
+#     'Skills': ['Selected Skills', 'Remaining Skills'],
+#     'Percentage': [total_percentage, 100 - total_percentage]
+# }
+# chart_df = pd.DataFrame(data)
+
+# # Create stacked column bar chart with Altair
+# bar_chart = alt.Chart(chart_df).mark_bar().encode(
+#     x=alt.X('Skills:N', axis=alt.Axis(title=None)),
+#     y=alt.Y('Percentage:Q', axis=alt.Axis(title='Percentage')),
+#     color=alt.Color('Skills:N', scale=alt.Scale(range=['#1f77b4', '#ff7f0e']), legend=None),
+# )
+
+# # Display chart
+# st.altair_chart(bar_chart, use_container_width=True)
+#
+#Create variable 100 %
+
+# total_percentage = 50  # Example value for total_percentage
+# index = ["Skillset"]
+# df = pd.DataFrame({"Selected Skills": [total_percentage], "Skills Still to Learn": [100]}, index=index)
+# st.pyplot(df.plot.barh(stacked=True).figure)
